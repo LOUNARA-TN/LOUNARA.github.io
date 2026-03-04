@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Détail Produit - LOUNARA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <img src="images/logo.png" alt="LOUNARA" class="logo">
+</header>
+
+<main class="product-detail">
+  <h2 class="product-name"></h2>
+  <div class="product-carousel"></div>
+  <p class="product-description"></p>
+</main>
+
+<footer>
+  <div class="footer-content">
+    © 2026 LOUNARA — Tous droits réservés
+  </div>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const productId = params.get('id');
+
+fetch('json/products.json')
+  .then(res => res.json())
+  .then(products => {
+    const p = products.find(prod => prod.id === productId);
+    if(!p) { document.body.innerHTML = "<h2>Produit non trouvé</h2>"; return; }
+    
+    document.querySelector('.product-name').textContent = p.name;
+    document.querySelector('.product-description').textContent = p.description;
+    const carousel = document.querySelector('.product-carousel');
+    p.images.forEach(imgSrc => {
+      const img = document.createElement('img');
+      img.dataset.src = imgSrc;
+      carousel.appendChild(img);
+    });
+
+    // Précharger la première image
+    const firstImg = new Image(); firstImg.src = p.images[0];
+
+    // Carousel animation + lazy load
+    const imgs = carousel.querySelectorAll('img');
+    imgs.forEach(img=>img.src=img.dataset.src);
+    let current = 0;
+    function showNext() {
+      imgs.forEach(img=>img.classList.remove('active'));
+      imgs[current].classList.add('active');
+      current = (current+1) % imgs.length;
+    }
+    if(imgs.length>0) showNext();
+    setInterval(showNext,3000);
+  });
+</script>
+</body>
+</html>
