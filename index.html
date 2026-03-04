@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>LOUNARA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,20 +18,31 @@
     <p class="subtitle">Collection Femme & Beauté</p>
   </header>
 
-  <!-- Section Collection Vêtements -->
+  <!-- Section Vêtements -->
   <section class="collection">
     <h2>Vêtements</h2>
     <div class="grid">
+
       <div class="item">
-        <img src="images/look1.jpg" alt="Veste Noire">
+        <div class="carousel">
+          <img src="images/look1_1.jpg" alt="Veste Noire - vue 1">
+          <img src="images/look1_2.jpg" alt="Veste Noire - vue 2">
+          <img src="images/look1_3.jpg" alt="Veste Noire - vue 3">
+        </div>
         <h3>Veste Noire</h3>
         <p>Veste élégante en coton premium. Coupe moderne et féminine.</p>
       </div>
+
       <div class="item">
-        <img src="images/look2.jpg" alt="Robe Satin">
+        <div class="carousel">
+          <img src="images/look2_1.jpg" alt="Robe Satin - vue 1">
+          <img src="images/look2_2.jpg" alt="Robe Satin - vue 2">
+          <img src="images/look2_3.jpg" alt="Robe Satin - vue 3">
+        </div>
         <h3>Robe Satin</h3>
         <p>Robe fluide parfaite pour l'été, style doux et élégant.</p>
       </div>
+
     </div>
   </section>
 
@@ -36,16 +50,27 @@
   <section class="cosmetics">
     <h2>Cosmétiques</h2>
     <div class="grid">
+
       <div class="item">
-        <img src="images/cosmetic1.jpg" alt="Rouge à Lèvres">
+        <div class="carousel">
+          <img src="images/cosmetic1_1.jpg" alt="Rouge à Lèvres - vue 1">
+          <img src="images/cosmetic1_2.jpg" alt="Rouge à Lèvres - vue 2">
+          <img src="images/cosmetic1_3.jpg" alt="Rouge à Lèvres - vue 3">
+        </div>
         <h3>Rouge à Lèvres</h3>
         <p>Fini doux et confortable, couleur pastel.</p>
       </div>
+
       <div class="item">
-        <img src="images/cosmetic2.jpg" alt="Crème visage">
+        <div class="carousel">
+          <img src="images/cosmetic2_1.jpg" alt="Crème Visage - vue 1">
+          <img src="images/cosmetic2_2.jpg" alt="Crème Visage - vue 2">
+          <img src="images/cosmetic2_3.jpg" alt="Crème Visage - vue 3">
+        </div>
         <h3>Crème Visage</h3>
         <p>Soin hydratant léger pour une peau lumineuse.</p>
       </div>
+
     </div>
   </section>
 
@@ -53,6 +78,18 @@
   <footer>
     © 2026 LOUNARA — Tous droits réservés
   </footer>
+
+  <!-- JS minimal pour carousel automatique -->
+  <script>
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      const images = carousel.querySelectorAll('img');
+      let index = 0;
+      setInterval(() => {
+        images.forEach((img, i) => img.style.opacity = i === index ? 1 : 0);
+        index = (index + 1) % images.length;
+      }, 3000); // change image toutes les 3 secondes
+    });
+  </script>
 
 </body>
 </html>
