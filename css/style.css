@@ -211,19 +211,35 @@ footer{
   transform:scale(1.15);
 }
 /* BOUTON RETOUR */
-.back-button{
-  max-width:1200px;
-  margin:30px auto 0;
-  padding:0 40px;
+.back-button {
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding: 0 40px;
 }
 
-.back-button a{
-  text-decoration:none;
-  color:#a77a7a;
-  font-weight:500;
-  font-size:14px;
+.back-button a {
+  text-decoration: none;
+  color: #a77a7a;
+  font-weight: 500;
+  font-size: 16px; /* un peu plus grand */
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s;
 }
 
-.back-button a:hover{
-  color:#000;
+.back-button a:hover {
+  color: #000;
+}
+
+/* Flèche */
+.back-button .arrow {
+  font-size: 22px;   /* taille de la flèche */
+  margin-right: 8px;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+/* Animation au hover : la flèche glisse légèrement vers la gauche */
+.back-button a:hover .arrow {
+  transform: translateX(-5px);
 }
