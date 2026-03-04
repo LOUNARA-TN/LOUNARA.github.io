@@ -13,9 +13,9 @@
 </header>
 
 <main class="product-detail">
-  <h2 class="product-name" style="text-align:center;"></h2>
-  <div class="product-carousel" style="display:flex; justify-content:center; gap:10px;"></div>
-  <p class="product-description" style="text-align:center; max-width:700px; margin:20px auto;"></p>
+  <h2 class="product-name"></h2>
+  <div class="product-carousel"></div>
+  <p class="product-description"></p>
 </main>
 
 <footer>
@@ -27,11 +27,8 @@ const params = new URLSearchParams(window.location.search);
 const productId = params.get('id');
 
 fetch('json/products.json')
-.then(res => {
-  if(!res.ok) throw new Error('Impossible de charger le JSON');
-  return res.json();
-})
-.then(products => {
+.then(res=>res.json())
+.then(products=>{
   const p = products.find(prod => prod.id === productId);
   if(!p){ document.body.innerHTML="<h2>Produit non trouvé</h2>"; return; }
 
@@ -41,30 +38,25 @@ fetch('json/products.json')
 
   p.images.forEach((imgSrc,i)=>{
     const img=document.createElement('img');
-    img.dataset.src=imgSrc;
-    if(i===0) img.classList.add('active');
+    img.src=imgSrc;
     img.alt=p.name+' - vue '+(i+1);
+    if(i===0) img.classList.add('active');
     carousel.appendChild(img);
+
+    img.addEventListener('click', ()=>{
+      carousel.querySelectorAll('img').forEach(im=>im.classList.remove('active'));
+      img.classList.add('active');
+    });
   });
 
-  const firstImg=new Image();
-  firstImg.src=p.images[0];
-
-  carousel.querySelectorAll('img').forEach(img=>img.src=img.dataset.src);
-
-  const imgs=carousel.querySelectorAll('img');
-  let current=0;
+  let current = 0;
+  const imgs = carousel.querySelectorAll('img');
   function showNext(){
-    imgs.forEach(img=>img.classList.remove('active'));
+    imgs.forEach(im=>im.classList.remove('active'));
     imgs[current].classList.add('active');
-    current=(current+1)%imgs.length;
+    current = (current+1)%imgs.length;
   }
-  setInterval(showNext,3000);
-
-})
-.catch(err=>{
-  document.querySelector('.product-detail').innerHTML=`<p style="text-align:center;color:red;">Erreur: ${err.message}</p>`;
-  console.error(err);
+  setInterval(showNext, 4000);
 });
 </script>
 </body>
