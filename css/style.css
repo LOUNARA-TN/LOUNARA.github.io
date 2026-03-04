@@ -1,82 +1,49 @@
-/* ===== BASE ===== */
-
 body{
   margin:0;
   font-family:'Inter',sans-serif;
-  background:#fcf8f5;
+  background:#ffffff; /* BLANC PROPRE */
   color:#111;
 }
 
-/* ===== HEADER ===== */
-
+/* HEADER */
 .main-header{
   text-align:center;
-  padding:50px 20px 30px 20px;
+  padding:50px 20px 30px;
   border-bottom:1px solid #eee;
 }
 
-/* LOGO CENTRÉ */
 .logo{
+  max-width:190px;
   display:block;
   margin:0 auto;
-  max-width:190px;
 }
 
-/* SOUS TITRE */
 .subtitle{
   margin-top:15px;
   font-family:'Playfair Display',serif;
-  font-size:15px;
   color:#a77a7a;
   letter-spacing:2px;
 }
 
-/* ===== MENU CATÉGORIES ===== */
-
+/* MENU */
 .categories-menu{
   margin-top:25px;
   display:flex;
   justify-content:center;
-  align-items:center;
-  gap:35px; /* espace horizontal */
-  flex-wrap:nowrap; /* force sur une seule ligne */
+  gap:35px;
 }
 
 .categories-menu a{
   text-decoration:none;
   color:#7a5f5f;
   font-weight:500;
-  position:relative;
-  white-space:nowrap; /* empêche retour ligne */
 }
 
-/* Effet underline luxe */
-.categories-menu a::after{
-  content:"";
-  display:block;
-  width:0;
-  height:1px;
-  background:#7a5f5f;
-  transition:0.3s;
-  margin:auto;
+.categories-menu a:hover{
+  color:#000;
 }
 
-.categories-menu a:hover::after{
-  width:100%;
-}
-
-/* ===== SECTION PRODUITS ===== */
-
-.collection h2{
-  text-align:center;
-  margin-top:60px;
-  font-family:'Playfair Display',serif;
-  font-size:28px;
-  color:#7a5f5f;
-}
-
-/* ===== GRID ===== */
-
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -89,7 +56,6 @@ body{
 .item-link{
   text-decoration:none;
   color:inherit;
-  transition:0.4s;
 }
 
 .item-link img{
@@ -104,30 +70,90 @@ body{
   transform:scale(1.05);
 }
 
-.item-link h3{
-  text-align:center;
-  margin:15px 0 5px;
-  font-family:'Playfair Display',serif;
-}
-
+.item-link h3,
 .item-link p{
   text-align:center;
-  font-size:14px;
-  color:#555;
 }
 
-/* ===== FOOTER ===== */
-
-footer{
+/* CONTACT BAS */
+.contact{
   text-align:center;
-  padding:40px 20px;
-  font-size:12px;
-  color:#999;
-  border-top:1px solid #eee;
+  padding:60px 20px;
+  background:#f9f9f9;
 }
 
-/* ===== WHATSAPP ===== */
+.contact-links{
+  margin-top:15px;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+}
 
+.contact-links a{
+  text-decoration:none;
+  color:#a77a7a;
+  font-weight:500;
+}
+
+/* PRODUCT PAGE ZARA */
+.product-layout{
+  display:flex;
+  gap:80px;
+  max-width:1200px;
+  margin:80px auto;
+  padding:0 40px;
+  align-items:flex-start;
+}
+
+.main-image{
+  width:100%;
+  max-width:450px;
+  height:600px;
+  object-fit:cover;
+  border-radius:20px;
+}
+
+.thumbnails{
+  display:flex;
+  gap:15px;
+  margin-top:20px;
+}
+
+.thumb{
+  width:80px;
+  height:110px;
+  object-fit:cover;
+  border-radius:10px;
+  cursor:pointer;
+  opacity:0.7;
+}
+
+.active-thumb{
+  border:2px solid #a77a7a;
+  opacity:1;
+}
+
+.product-info{
+  max-width:500px;
+}
+
+.product-name{
+  font-family:'Playfair Display',serif;
+  font-size:30px;
+}
+
+.product-description{
+  margin-top:20px;
+  line-height:1.8;
+}
+
+.order-info{
+  margin-top:20px;
+  color:#a77a7a;
+  font-weight:500;
+}
+
+/* WHATSAPP */
 .whatsapp-float{
   position:fixed;
   bottom:25px;
@@ -138,22 +164,24 @@ footer{
   padding:15px;
   border-radius:50%;
   text-decoration:none;
-  box-shadow:0 10px 25px rgba(0,0,0,0.25);
-  transition:0.3s;
 }
 
-.whatsapp-float:hover{
-  transform:scale(1.1);
+/* RESPONSIVE */
+@media(max-width:900px){
+  .product-layout{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .main-image{
+    height:500px;
+  }
 }
 
-/* ===== RESPONSIVE ===== */
-
-@media(max-width:768px){
-  .categories-menu{
-    gap:20px;
-  }
-
-  .grid{
-    padding:0 20px;
-  }
+footer{
+  text-align:center;
+  padding:40px;
+  font-size:12px;
+  color:#999;
+  border-top:1px solid #eee;
 }
