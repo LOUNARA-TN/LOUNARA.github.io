@@ -10,13 +10,7 @@
 <body>
 
 <header class="main-header">
-  <div class="header-top">
-    <img src="images/logo.png" alt="LOUNARA" class="logo">
-    <div class="header-social">
-      <a href="https://www.instagram.com/" target="_blank">IG</a>
-      <a href="https://www.facebook.com/" target="_blank">FB</a>
-    </div>
-  </div>
+  <img src="images/logo.png" alt="LOUNARA" class="logo">
 </header>
 
 <main class="product-layout">
@@ -62,7 +56,7 @@ fetch('json/products.json')
     const thumb = document.createElement('img');
     thumb.src = imgSrc;
     thumb.classList.add('thumb');
-    if(index === 0) thumb.classList.add('active-thumb');
+    if(index===0) thumb.classList.add('active-thumb');
     thumbnails.appendChild(thumb);
 
     thumb.addEventListener('click', ()=>{
