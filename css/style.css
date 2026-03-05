@@ -25,6 +25,11 @@ body{
   letter-spacing:2px;
 }
 
+a {
+  text-decoration:none;
+  color:inherit;
+}
+
 /* MENU */
 .categories-menu{
   margin-top:25px;
@@ -41,6 +46,12 @@ body{
 
 .categories-menu a:hover{
   color:#000;
+}
+
+.categories-menu a.active{
+  color:#000;
+  border-bottom:2px solid #a77a7a;
+  padding-bottom:3px;
 }
 
 /* GRID */
@@ -244,7 +255,4 @@ footer{
   transform: translateX(-5px);
 }
 
-a {
-  text-decoration:none;
-  color:inherit;
-}
+
