@@ -9,16 +9,68 @@
 
 <style>
 body{margin:0;font-family:Inter,sans-serif}
-.container{max-width:1100px;margin:auto;padding:40px}
-.product-layout{display:flex;gap:50px;flex-wrap:wrap}
-.main-image{width:400px;height:500px;object-fit:cover;border-radius:12px}
-.thumbnails{display:flex;gap:10px;margin-top:10px}
-.thumb{width:70px;height:90px;object-fit:cover;cursor:pointer;opacity:.6}
-.thumb.active{opacity:1;border:2px solid #a77a7a}
-.product-info{max-width:500px}
-.product-name{font-size:28px}
-.product-price{font-size:22px;font-weight:600;margin-top:10px}
-.product-source{color:#a77a7a;margin-top:5px}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:40px;
+}
+
+.product-layout{
+  display:flex;
+  gap:50px;
+  flex-wrap:wrap;
+}
+
+.main-image{
+  width:400px;
+  height:500px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.thumbnails{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.thumb{
+  width:70px;
+  height:90px;
+  object-fit:cover;
+  cursor:pointer;
+  opacity:.6;
+}
+
+.thumb.active{
+  opacity:1;
+  border:2px solid #a77a7a;
+}
+
+.product-info{
+  max-width:500px;
+}
+
+.product-name{
+  font-size:28px;
+}
+
+.product-price{
+  font-size:22px;
+  font-weight:600;
+  margin-top:10px;
+}
+
+.product-source{
+  color:#a77a7a;
+  margin-top:5px;
+}
+
+.product-size{
+  margin-top:5px;
+  font-size:14px;
+}
 </style>
 </head>
 
@@ -40,6 +92,7 @@ body{margin:0;font-family:Inter,sans-serif}
 <p class="product-description"></p>
 <p class="product-price"></p>
 <p class="product-source"></p>
+<p class="product-size"></p>
 </div>
 
 </div>
@@ -61,6 +114,15 @@ document.querySelector(".product-description").textContent=p.description;
 document.querySelector(".product-price").textContent=p.price;
 document.querySelector(".product-source").textContent="Source : "+p.source;
 
+/* ✅ taille uniquement si existe */
+const sizeEl=document.querySelector(".product-size");
+
+if(p.size){
+  sizeEl.textContent="Tailles : "+p.size;
+}else{
+  sizeEl.style.display="none";
+}
+
 const main=document.querySelector(".main-image");
 const thumbs=document.querySelector(".thumbnails");
 
@@ -70,6 +132,7 @@ p.images.forEach((src,i)=>{
 const img=document.createElement("img");
 img.src=src;
 img.className="thumb";
+
 if(i===0) img.classList.add("active");
 
 img.onclick=()=>{
