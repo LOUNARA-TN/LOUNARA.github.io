@@ -87,7 +87,11 @@ body{margin:0;font-family:Inter,sans-serif;background:#fff;color:#111}
   color:#a77a7a;
 }
 
-/* ✅ MOBILE FIX MENU */
+.size{
+  font-size:13px;
+}
+
+/* MOBILE */
 @media(max-width:600px){
   .categories-menu{
     display:flex;
@@ -109,7 +113,6 @@ body{margin:0;font-family:Inter,sans-serif;background:#fff;color:#111}
     white-space:nowrap;
   }
 }
-
 </style>
 </head>
 
@@ -171,6 +174,15 @@ source.textContent="Source : "+p.source;
 source.className="source";
 
 a.append(img,name,desc,price,source);
+
+/* ✅ taille uniquement si existe */
+if(p.size){
+  const size=document.createElement("p");
+  size.textContent="Tailles : "+p.size;
+  size.className="size";
+  a.appendChild(size);
+}
+
 grid.appendChild(a);
 
 });
@@ -188,7 +200,6 @@ filter(cat);
 menuLinks.forEach(l=>l.classList.remove("active"));
 link.classList.add("active");
 
-/* ✅ Auto scroll vers catégorie active sur mobile */
 link.scrollIntoView({
   behavior:"smooth",
   inline:"center",
