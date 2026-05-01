@@ -274,7 +274,7 @@
     "source":"SHEIN",
     "size":"M",
     "badge":"En stock",
-    "images":["images/2pieceblanc.jpg"]
+    "images":["images/2pieceblanc.webp"]
   },
   {
     "id":"ling17",
@@ -502,7 +502,7 @@
     "price":"1.2 TND",
     "source":"SHEIN",
     "badge":"En stock",
-    "images":["images/6paires1.jpg"]
+    "images":["images/6paires1.avif"]
   },
   {
     "id":"bag17",
@@ -512,7 +512,7 @@
     "price":"1.2 TND",
     "source":"SHEIN",
     "badge":"En stock",
-    "images":["images/6paires2.jpg"]
+    "images":["images/6paires2.avif"]
   },
   {
     "id":"bag18",
@@ -522,7 +522,7 @@
     "price":"1.2 TND",
     "source":"SHEIN",
     "badge":"En stock",
-    "images":["images/6paires3.jpg"]
+    "images":["images/6paires3.avif"]
   },
   {
     "id":"bag19",
@@ -532,7 +532,7 @@
     "price":"1.2 TND",
     "source":"SHEIN",
     "badge":"En stock",
-    "images":["images/6paires4.jpg"]
+    "images":["images/6paires4.avif"]
   },
   {
     "id":"bag20",
