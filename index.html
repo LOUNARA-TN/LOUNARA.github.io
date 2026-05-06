@@ -59,6 +59,7 @@ body{margin:0;font-family:Inter,sans-serif;background:#fff;color:#111}
   text-decoration:none;
   display:block;
   transition:.3s;
+  position:relative;
 }
 
 .item-link:hover{
@@ -70,6 +71,33 @@ body{margin:0;font-family:Inter,sans-serif;background:#fff;color:#111}
   height:420px;
   object-fit:cover;
   border-radius:16px;
+}
+
+/* BADGE */
+.badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:#a77a7a;
+  color:#fff;
+  padding:5px 10px;
+  font-size:12px;
+  border-radius:20px;
+  z-index:2;
+}
+
+.badge.reserved{
+  background:#555;
+}
+
+/* PRODUIT RESERVE */
+.item-link.reserved{
+  pointer-events:none;
+  opacity:0.6;
+}
+
+.item-link.reserved img{
+  filter:grayscale(100%);
 }
 
 .item-link h3,
@@ -156,6 +184,21 @@ const a=document.createElement("a");
 a.href="product.html?id="+p.id;
 a.className="item-link";
 
+/* ✅ gestion badge */
+if(p.badge && p.badge.trim() !== ""){
+
+  const badge=document.createElement("div");
+  badge.className="badge";
+  badge.textContent=p.badge;
+
+  if(p.badge.toLowerCase().includes("reserv")){
+    a.classList.add("reserved");
+    badge.classList.add("reserved");
+  }
+
+  a.appendChild(badge);
+}
+
 const img=document.createElement("img");
 img.src=p.images[0];
 
@@ -175,7 +218,7 @@ source.className="source";
 
 a.append(img,name,desc,price,source);
 
-/* ✅ taille uniquement si existe */
+/* taille seulement si existe */
 if(p.size){
   const size=document.createElement("p");
   size.textContent="Taille : "+p.size;
